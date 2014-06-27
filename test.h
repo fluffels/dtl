@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 #define test(condition) \
-fprintf(stderr, "%s: test '%s' ", __func__, #condition); \
-if (condition) {fprintf(stderr, "passed.\n");} \
-else {fprintf(stderr, "failed.\n");}
+if (condition) {fprintf(stderr, "PASSED: ");} \
+else {fprintf(stderr, "FAILED: ");} \
+fprintf(stderr, "%s: test '%s'\n", __func__, #condition);
 
 #endif
 
