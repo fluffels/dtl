@@ -73,11 +73,14 @@ void test_list(void)
     node* last_node = dtl_list_append(new_node);
     last_node->value = ten;
 
+    node* temp = n;
     test(dtl_list_get(n, int) == 5);
-    n = n->next;
+    temp = n->next;
     test(dtl_list_get(n, int) == 3);
-    n = n->next;
+    temp = n->next;
     test(dtl_list_get(n, int) == 10);
+
+    dtl_list_free(n);
 }
 
 int main(void)
