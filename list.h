@@ -1,7 +1,7 @@
 #ifndef DTL_LIST_H
 #define DTL_LIST_H
 
-#include <malloc.h>
+#include "dtl.h"
 
 typedef struct node_t
 {
@@ -23,7 +23,7 @@ dtl_list_node*      dtl_list_prepend(dtl_list_node* n);
 #ifdef DTL_LIST_IMPLEMENTATION
 dtl_list_node* dtl_list_alloc(void)
 {
-    dtl_list_node* n = malloc(sizeof(dtl_list_node));
+    dtl_list_node* n = NEW(dtl_list_node);
     n->next = NULL;
     n->prev = NULL;
     n->value = NULL;
@@ -33,7 +33,7 @@ dtl_list_node* dtl_list_alloc(void)
 
 dtl_list_node* dtl_list_append(dtl_list_node* n)
 {
-    dtl_list_node* new_node = malloc(sizeof(dtl_list_node));
+    dtl_list_node* new_node = NEW(dtl_list_node);
     dtl_list_node* old_next = n->next;
 
     new_node->next = old_next;
@@ -74,7 +74,7 @@ unsigned dtl_list_length(dtl_list_node* n)
 
 dtl_list_node* dtl_list_prepend(dtl_list_node* n)
 {
-    dtl_list_node* new_node = malloc(sizeof(dtl_list_node));
+    dtl_list_node* new_node = NEW(dtl_list_node);
     dtl_list_node* old_prev = n->prev;
 
     new_node->next = n;
