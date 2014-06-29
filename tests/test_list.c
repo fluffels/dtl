@@ -4,8 +4,8 @@
 
 void test_append(void)
 {
-    node* n = dtl_list_alloc();
-    node* new_node = dtl_list_append(n);
+    dtl_list_node* n = dtl_list_alloc();
+    dtl_list_node* new_node = dtl_list_append(n);
 
     unsigned l = dtl_list_length(n);
     test(l == 2);
@@ -14,7 +14,7 @@ void test_append(void)
     test(n->prev == NULL);
     test(n->next->prev == n);
 
-    node* new_new_node = dtl_list_append(n);
+    dtl_list_node* new_new_node = dtl_list_append(n);
 
     l = dtl_list_length(n);
     test(l == 3);
@@ -28,7 +28,7 @@ void test_append(void)
 
 void test_prepend(void)
 {
-    node* n = dtl_list_alloc();
+    dtl_list_node* n = dtl_list_alloc();
     n = dtl_list_prepend(n);
 
     unsigned l = dtl_list_length(n);
@@ -39,7 +39,7 @@ void test_prepend(void)
 
 void test_get(void)
 {
-    node* n = dtl_list_alloc();
+    dtl_list_node* n = dtl_list_alloc();
     int* five = malloc(sizeof(int));
     *five = 5;
     n->value = five;
@@ -50,7 +50,7 @@ void test_get(void)
 
 void test_length(void)
 {
-    node* n = dtl_list_alloc();
+    dtl_list_node* n = dtl_list_alloc();
     unsigned l = dtl_list_length(n);
     test(l == 1);
     dtl_list_free(n);
@@ -58,7 +58,7 @@ void test_length(void)
 
 void test_list(void)
 {
-    node* n = dtl_list_alloc();
+    dtl_list_node* n = dtl_list_alloc();
 
     int* five = malloc(sizeof(int));
     int* three = malloc(sizeof(int));
@@ -67,18 +67,18 @@ void test_list(void)
 
     n->value = five;
 
-    node* new_node = dtl_list_append(n);
+    dtl_list_node* new_node = dtl_list_append(n);
     new_node->value = three;
 
-    node* last_node = dtl_list_append(new_node);
+    dtl_list_node* last_node = dtl_list_append(new_node);
     last_node->value = ten;
 
-    node* temp = n;
-    test(dtl_list_get(n, int) == 5);
-    temp = n->next;
-    test(dtl_list_get(n, int) == 3);
-    temp = n->next;
-    test(dtl_list_get(n, int) == 10);
+    dtl_list_node* temp = n;
+    test(dtl_list_get(temp, int) == 5);
+    temp = temp->next;
+    test(dtl_list_get(temp, int) == 3);
+    temp = temp->next;
+    test(dtl_list_get(temp, int) == 10);
 
     dtl_list_free(n);
 }
