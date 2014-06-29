@@ -10,11 +10,11 @@ typedef struct node_t
     void* value;
 } dtl_list_node;
 
-dtl_list_node*       dtl_list_alloc(void);
-dtl_list_node*       dtl_list_append(dtl_list_node* n);
-void            dtl_list_free(dtl_list_node*);
-unsigned        dtl_list_length(dtl_list_node*);
-dtl_list_node*       dtl_list_prepend(dtl_list_node* n);
+dtl_list_node*      dtl_list_alloc(void);
+dtl_list_node*      dtl_list_append(dtl_list_node* n);
+void                dtl_list_free(dtl_list_node*);
+unsigned            dtl_list_length(dtl_list_node*);
+dtl_list_node*      dtl_list_prepend(dtl_list_node* n);
 
 #define     dtl_list_get(node, type) *((type*)(node->value))
 
